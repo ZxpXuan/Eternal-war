@@ -16,6 +16,6 @@ namespace Assets.Scripts
      public List<EnableEffectTypes> enableEffectTypesList; //生效条件类型枚举列表
      public BuffEffectAndValue buffEffectAndValue;   //生效种类以及值，每个buff只带一种效果
 
-     public XEffect  BuffSpecialEffect; //存储buff携带特效，需要在Buff效果消失同时销毁buff效果
+     public ParticleSystem  BuffSpecialEffect; //存储buff携带特效，需要在Buff效果消失同时销毁buff效果
     }
 }

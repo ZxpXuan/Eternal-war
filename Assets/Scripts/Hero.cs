@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Assets.Scripts
 {
-    class Hero
+    public class Hero :MonoBehaviour
     {
         private int heroID; //角色（英雄）ID
         public int ATK;
