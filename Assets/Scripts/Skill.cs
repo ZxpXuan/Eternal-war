@@ -14,7 +14,7 @@ namespace Assets.Scripts
         public List<SkillTrigger> skillTriggers; //技能触发器列表
         private Hero thisHero; //存储技能归属的英雄
         public int skillAPCost; //技能的AP消耗
-        private enum Direction; //技能释放朝向
+        public  Direction direction; //技能释放朝向
         public bool cdByTurn; //技能发动CD，以回合计，为0则代表可以在一回合内使用多次
 
     }

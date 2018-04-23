@@ -12,7 +12,7 @@ namespace Assets.Scripts
 
         }
             
-        private void LoadGameMode(GameMode)// 加载游戏模式
+        private void LoadGameMode(GameMode GM)                  // 加载游戏模式
         {
 
 

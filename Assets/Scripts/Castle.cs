@@ -10,7 +10,7 @@ namespace Assets.Scripts
 
         public int CSHP_Max;  //基地总HP
         private int CSHP_Cur;  //基地当前HP
-        private Player;//belongPlayer归属的玩家
+        private Player ownerPlayer;//belongPlayer归属的玩家
         public Sprite CSTexture; //基地材质图
 
     }
