@@ -49,6 +49,14 @@ namespace Assets.Scripts
             return isFinished;
         }
 
+
+
+
+
+
+
+
+
         void GameEnd()//游戏结束之后的操作，输出游戏结果，清空数据
         {
 

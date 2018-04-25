@@ -9,48 +9,56 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1349297689120174}
+  m_RootGameObject: {fileID: 1885720637247876}
   m_IsPrefabParent: 1
---- !u!1 &1349297689120174
+--- !u!1 &1885720637247876
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4622071009014872}
-  - component: {fileID: 114998882037498120}
+  - component: {fileID: 4201382893567782}
+  - component: {fileID: 114129739521588514}
   m_Layer: 0
-  m_Name: Map_01
+  m_Name: SkillTrigger001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4622071009014872
+--- !u!4 &4201382893567782
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1349297689120174}
+  m_GameObject: {fileID: 1885720637247876}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5, y: -5, z: -37}
+  m_LocalPosition: {x: -12.279221, y: -1.8020325, z: -47.48543}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114998882037498120
+--- !u!114 &114129739521588514
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1349297689120174}
+  m_GameObject: {fileID: 1885720637247876}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49482aa20bd00e4438377f8fa63c239d, type: 3}
+  m_Script: {fileID: 11500000, guid: be7b1c114adf67e4a93dffbd5db4a2ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tile: {fileID: 21300000, guid: e6ffb70da85084d4ba013e0db4649874, type: 3}
-  length: 7
-  width: 5
+  triggerExistingTime: 1
+  triggersDurationSteps: 1
+  delaySteps: 0
+  specialEffect: {fileID: 198002942550923196, guid: e32d124364d6ff94bbf7884792a46ddb,
+    type: 2}
+  effectRange:
+  - {x: 0, y: 1}
+  - {x: -1, y: 0}
+  - {x: 1, y: 0}
+  effectBuff:
+  - {fileID: 114875166360980460, guid: a441a51d9d15da04b8de2fa35f22d5d3, type: 2}

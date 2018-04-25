@@ -6,10 +6,10 @@ using UnityEngine;
 
 namespace Assets.Scripts
 {
-    public class TerrainSkill
+    public class TerrainSkill:Skill
     {
         public int terrainID;  //地形ID
         public Sprite terrainTexture; //地形格材质图
-
+        
     }
 }

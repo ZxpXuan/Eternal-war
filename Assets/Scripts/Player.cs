@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Assets.Scripts
 {
-    public class Player
+    public class Player:MonoBehaviour
     {
         private int playerID;  //玩家ID，初版功能只需要用序号代替玩家就行了
         private Sprite playerIcon;  //玩家ICON

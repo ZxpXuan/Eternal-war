@@ -9,48 +9,51 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1349297689120174}
+  m_RootGameObject: {fileID: 1611668893495052}
   m_IsPrefabParent: 1
---- !u!1 &1349297689120174
+--- !u!1 &1611668893495052
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4622071009014872}
-  - component: {fileID: 114998882037498120}
+  - component: {fileID: 4388004800517752}
+  - component: {fileID: 114943415377248832}
   m_Layer: 0
-  m_Name: Map_01
+  m_Name: Hero_001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4622071009014872
+--- !u!4 &4388004800517752
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1349297689120174}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5, y: -5, z: -37}
+  m_GameObject: {fileID: 1611668893495052}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 4.8, y: 5.1, z: -11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114998882037498120
+--- !u!114 &114943415377248832
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1349297689120174}
+  m_GameObject: {fileID: 1611668893495052}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49482aa20bd00e4438377f8fa63c239d, type: 3}
+  m_Script: {fileID: 11500000, guid: 731e3fd140070b24ea1091f9c2d5fe64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tile: {fileID: 21300000, guid: e6ffb70da85084d4ba013e0db4649874, type: 3}
-  length: 7
-  width: 5
+  HP_Max: 8
+  ATK_Max: 1
+  movingPoint_Max: 6
+  heroSkillList:
+  - {fileID: 114144242291596224, guid: 7bdab20790f7ce342912e7583217737e, type: 2}
+  heroTexture: {fileID: 21300000, guid: 7f44be4207322254f87ed2565942bd4f, type: 3}

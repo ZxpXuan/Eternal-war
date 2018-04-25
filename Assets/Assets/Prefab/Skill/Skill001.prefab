@@ -9,48 +9,54 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1349297689120174}
+  m_RootGameObject: {fileID: 1741617601272322}
   m_IsPrefabParent: 1
---- !u!1 &1349297689120174
+--- !u!1 &1741617601272322
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4622071009014872}
-  - component: {fileID: 114998882037498120}
+  - component: {fileID: 4301088594377768}
+  - component: {fileID: 114144242291596224}
   m_Layer: 0
-  m_Name: Map_01
+  m_Name: Skill001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4622071009014872
+--- !u!4 &4301088594377768
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1349297689120174}
+  m_GameObject: {fileID: 1741617601272322}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5, y: -5, z: -37}
+  m_LocalPosition: {x: -12.279221, y: -1.8020325, z: -47.48543}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114998882037498120
+--- !u!114 &114144242291596224
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1349297689120174}
+  m_GameObject: {fileID: 1741617601272322}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49482aa20bd00e4438377f8fa63c239d, type: 3}
+  m_Script: {fileID: 11500000, guid: 89c70a33864259f40ad7a78218183e5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tile: {fileID: 21300000, guid: e6ffb70da85084d4ba013e0db4649874, type: 3}
-  length: 7
-  width: 5
+  skillID: 1001
+  skillName: "\u8C0B\u6740\u610F\u5FD7"
+  skillIcon: {fileID: 0}
+  skillTriggers:
+  - {fileID: 114129739521588514, guid: 25464020d2bc00141bc39843f371e1cf, type: 2}
+  skillAPCost: 1
+  direction: 0
+  cdByTurn: 0
+  CD: 0

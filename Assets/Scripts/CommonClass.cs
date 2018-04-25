@@ -7,20 +7,21 @@ namespace Assets.Scripts
 {
     public class PlayerActionAndValue
     {
-        enum PlayerAction { };
-        int value;   //如果枚举类型是技能，则值代表了该英雄的第几技能
+        public PlayerAction playerAction;
+        public int value;   //如果枚举类型是技能，则值代表了该英雄的第几技能
     }
 
+    [System.Serializable]
     public class EnableEffectTypeValue      //这就是技能生效条件判定
     {
-        enum EnableEffectTypes { camp,isSlowed,isStun,isRepeatedByStep,isHPLowerThan4 };
-        bool value;
+        public EnableEffectTypes enbleEffectTypes;
+        public int value;
     }
-
+    [System.Serializable]
     public class BuffEffectAndValue
     {
-        public enum SkillEffectTypes{}; //技能效果类型枚举 
-        public float affectValue; //buff改变的属性值
+        public SkillEffectTypes skillEffectTypes; //技能效果类型枚举 
+        public int affectValue; //buff改变的属性值        以正负值表现加减
     }
 
     public enum SkillEffectTypes { HP,AP,stun,movingPoint,distance,createBuffOnTarget } // 存储技能效果类型枚举，用于“光克暗，庇护克物攻”之类的东西 ，这将用于技能效果的具体判定逻辑中
