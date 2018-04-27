@@ -12,6 +12,7 @@ namespace Assets.Scripts
         private int CSHP_Cur=12;  //基地当前HP
         private Player ownerPlayer;//belongPlayer目前归属的玩家
         private Player ownerPlayer_Origin;//belongPlayer原本归属的玩家
+        public int basicDMG=2; //每次基地被攻击受到的伤害
 
         public Sprite CSTexture; //基地材质图
 

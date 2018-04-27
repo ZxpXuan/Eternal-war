@@ -11,8 +11,9 @@ namespace Assets.Scripts
         private Sprite playerIcon;  //玩家ICON
         private int actionPoint=8;  //当前AP点数 
         private int actionPoint_Max=8; //总AP点数 
-        private List<Hero> heroes; //用于存储单个玩家操控的英雄对象列表，当英雄死亡时需要重新维护
+        private List<GameObject> heroes; //用于存储单个玩家操控的英雄对象列表(所以这是个prefab)，当英雄死亡时需要重新维护
         private int Camp;//存储玩家的阵营
+        private Castle castle; //存储玩家对应的基地
 
         private void Awake()
         {
@@ -20,11 +21,11 @@ namespace Assets.Scripts
             
         }
 
-        public void AddHeros(Hero h)
+        public void AddHeros(GameObject h)
         {
             heroes.Add(h);
         }
-        public List<Hero> GetHeroes()
+        public List<GameObject> GetHeroes()
         {
             return heroes;
         }
@@ -63,6 +64,11 @@ namespace Assets.Scripts
         public Sprite GetICON()
         {
             return playerIcon;
+        }
+
+        public void SubtractCastleHP()
+        {
+            castle.SetCSHP_Curr (castle.GetCSHP_Cur() - castle.basicDMG);
         }
     }
 }

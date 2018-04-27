@@ -33,8 +33,9 @@ namespace Assets.Scripts
 
     public enum SkillTriggerType { isTheFirstOneTriggerThenDispear,isTheGeneralTrigger }
 
-    /*isTheFirstOneTriggerThenDispear; 如果勾选，表示只要有角色进入trigger就会导致此trigger在下一步骤消失
-    isTheGeneralTrigger; 若勾选，表示任何进入此触发区域的单位都会被施加buff*/
+    /* 1.isTheFirstOneTriggerThenDispear; 如果勾选，表示只要有角色进入trigger就会导致此trigger在下一步骤消失
+    isTheGeneralTrigger; 若勾选，表示任何进入此触发区域的单位都会被施加buff
+    2.isTheGeneralTrigger；如果勾选，表示这是通过trigger的存在时间来控制的trigger*/
 
     public enum Direction { up,down,left,right };//  技能释放时英雄的朝向
     public enum PlayerAction { moving,skill }  // 玩家添加行动的行动类型
