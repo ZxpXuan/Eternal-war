@@ -8,6 +8,7 @@ namespace Assets.Scripts
     public class SkillTrigger:MonoBehaviour
     {
         private Vector2 position; //存储trigger当前位置
+        public bool isRepeatedBySteps; //trigger是否会按照步骤重复
         public int triggerExistingTime; //记录触发器已经存在了多久
         public int triggersDurationSteps; //存储触发器的持续步骤数
         public int delaySteps; //存储效果开始允许触发所需的延迟步骤数
