@@ -9,8 +9,8 @@ namespace Assets.Scripts
     {
         private int playerID;  //玩家ID，初版功能只需要用序号代替玩家就行了
         private Sprite playerIcon;  //玩家ICON
-        private int actionPoint=8;  //当前AP点数 
-        private int actionPoint_Max=8; //总AP点数 
+        public int actionPoint=8;  //当前AP点数 
+        public int actionPoint_Max=8; //总AP点数 
         private List<GameObject> heroes; //用于存储单个玩家操控的英雄对象列表(所以这是个prefab)，当英雄死亡时需要重新维护
         private int Camp;//存储玩家的阵营
         private Castle castle; //存储玩家对应的基地

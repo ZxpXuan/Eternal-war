@@ -30,9 +30,8 @@ namespace Assets.Scripts
         public int Value; //每一种类型对应的需求值
     }
 
-
-    public enum SkillEffectTypes { HP,AP,stun,movingPoint,distance,createBuffOnTarget } // 存储技能效果类型枚举，这将用于技能效果的具体判定逻辑中
-    public enum EnableEffectTypes { camp,isSlowed,isStun,isRepeatedByStep,isHPLowerThan4 };  //这个需要在Buff生效和trigger生效时进行判定
+    public enum SkillEffectTypes { HP, HP_Max, AP,AP_Max, stun,silence,movingPoint,movingPoing_Max,distance,createBuffOnTarget } // 存储技能效果类型枚举，这将用于技能效果的具体判定逻辑中
+    public enum EnableEffectTypes { camp_opponent,camp_self, isSlowed_false, isSlowed_ture, isStun_ture, isStun_false,isHPLowerThan4_ture, isHPLowerThan4_false};  //这个需要在Buff生效和trigger生效时进行判定
 
     /*生效条件类型枚举
      isRepeatedByStep; buff效果是否按步骤再次发动，用于会产生持续性效果的技能，比如火海。如果不再次发动，
@@ -40,14 +39,11 @@ namespace Assets.Scripts
 
     public enum SkillTriggerType { isTheFirstOneTriggerThenDispear, isRepeatedByStep }
 
-
-
     /* 1.isTheFirstOneTriggerThenDispear; 如果勾选，表示只要有角色进入trigger就会导致此trigger在下一步骤消失
     isTheGeneralTrigger; 若勾选，表示任何进入此触发区域的单位都会被施加buff
     2.isTheGeneralTrigger；如果勾选，表示这是通过trigger的存在时间来控制的trigger*/
 
     public enum Direction { up,down,left,right };//  技能释放时英雄的朝向
     public enum PlayerAction { moving,skill }  // 玩家添加行动的行动类型
-
 
 }
