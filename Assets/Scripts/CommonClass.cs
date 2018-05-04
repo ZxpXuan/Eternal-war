@@ -23,15 +23,10 @@ namespace Assets.Scripts
         public SkillEffectTypes skillEffectTypes; //技能效果类型枚举 
         public int affectValue; //buff改变的属性值        以正负值表现加减
     }
-    [System.Serializable]
-    public class EnableTriggerEffectTypesAndValue
-    {
-        public SkillEffectTypes enableTriggerEffectTypes; //允许trigger条件判断类型枚举 ，类似buff生效枚举
-        public int Value; //每一种类型对应的需求值
-    }
+
 
     public enum SkillEffectTypes { HP, HP_Max, AP,AP_Max, stun,silence,movingPoint,movingPoing_Max,distance,createBuffOnTarget } // 存储技能效果类型枚举，这将用于技能效果的具体判定逻辑中
-    public enum EnableEffectTypes { camp_opponent,camp_self, isSlowed_false, isSlowed_ture, isStun_ture, isStun_false,isHPLowerThan4_ture, isHPLowerThan4_false};  //这个需要在Buff生效和trigger生效时进行判定
+    public enum EnableEffectTypes { camp_opponent,camp_self, isSlowed_false, isSlowed_true, isStun_true, isStun_false,isHPLowerThan4_true, isHPLowerThan4_false};  //这个需要在Buff生效和trigger生效时进行判定
 
     /*生效条件类型枚举
      isRepeatedByStep; buff效果是否按步骤再次发动，用于会产生持续性效果的技能，比如火海。如果不再次发动，

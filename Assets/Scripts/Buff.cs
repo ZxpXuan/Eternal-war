@@ -24,45 +24,72 @@ namespace Assets.Scripts
 
         public void StepsMoveOn()
         {
-            if (isExistByTurn)
+            //if (buffDelay > 0)
+            //{
+            //    buffDelay--;
+            //    return;
+            //}
+
+            //if (EnableEffectCheck())
+            //{
+            //    TakeEffect();
+            //}
+
+            //if (!isRepeated)
+            //{
+            //    DestroyBuff();
+            //    return;
+            //}
+            
+            //if (buffDuration > 0)
+            //{
+            //    buffDuration--;
+            //}
+            //else
+            //{
+            //    DestroyBuff();
+            //}
+
+            //return;
+
+
+            if (isRepeated)
             {
-                if (isRepeated)
+                if (buffDuration > 0)
                 {
-                    if (buffDuration > 0)
+                    buffDuration--;
+
+                    if (buffDelay > 0)
                     {
-                        buffDuration--;
+                        buffDelay--;
+                    }
+                    else
+                    {
                         if (EnableEffectCheck())
                         {
                             TakeEffect();
                         }
-                    }
-                    else
-                    {
-                        DestroyBuff();
-                        return;
                     }
                 }
                 else
                 {
-                    if (buffDelay > 0)
-                        buffDelay--;
-                    else
+                    DestroyBuff();
+                    return;
+                }
+            }
+            else  //如果不重复
+            {
+                if (buffDelay > 0)
+                    buffDelay--;
+                else
+                {
+                    if (EnableEffectCheck())
                     {
-                        if (EnableEffectCheck())
-                        {
-                            TakeEffect();
-                        }
+                        TakeEffect();
+                        DestroyBuff();
                     }
                 }
             }
-            else  //如果是重复触发
-            {
-
-            }
-
-           
-
-
         }
 
         public void TurnsMoveOn()
@@ -75,68 +102,48 @@ namespace Assets.Scripts
             RecoverStatus();
             targetHero.Buffs.Remove(this);
         }
-
-
-
+        
         private bool EnableEffectCheck()
         {
-            bool isEnable=true;
-            int length = enbleEffectTypesList.Count;
-            for (int i = 0; i < length; i++)  //轮询列表中的每个枚举，一旦遇到不符合的条件都会自动跳出返回false
+            bool isEnable = true;
+
+            //轮询列表中的每个枚举，一旦遇到不符合的条件都会自动跳出返回false
+            for (int i = 0; i < enbleEffectTypesList.Count; i++) 
             {
                 switch (enbleEffectTypesList[i])
                 {
                     case EnableEffectTypes.camp_opponent:
-                        if (targetHero.OwnPlayer.GetCamp() == ownerHero.OwnPlayer.GetCamp())
-                        {
-                            return isEnable = false;
-                        }
+                        isEnable = targetHero.OwnPlayer.GetCamp() != ownerHero.OwnPlayer.GetCamp();
                         break;
 
                     case EnableEffectTypes.camp_self:
-                        if (targetHero.OwnPlayer.GetCamp() != ownerHero.OwnPlayer.GetCamp())
-                        {
-                            return isEnable = false;
-                        }
+                        isEnable = targetHero.OwnPlayer.GetCamp() == ownerHero.OwnPlayer.GetCamp();
                         break;
 
                     case EnableEffectTypes.isSlowed_false:
-                        if (targetHero.Hero_Stats_Cur.movingPoint < targetHero.Hero_Stats_Max.movingPoint)   //如果当前移动力小于最大移动力，则不视为减速
-                        {
-                            return isEnable = false;
-                        }
-                        break;
-                    case EnableEffectTypes.isSlowed_ture:
-                        if (targetHero.Hero_Stats_Cur.movingPoint >= targetHero.Hero_Stats_Max.movingPoint)   //如果当前移动力大于等于最大移动力，则不视为减速
-                        {
-                            return isEnable = false;
-                        }
+                        //如果当前移动力小于最大移动力，则不视为减速
+                        isEnable = targetHero.Hero_Stats_Cur.movingPoint >= targetHero.Hero_Stats_Max.movingPoint;
                         break;
 
-                    case EnableEffectTypes.isStun_ture:
-                        if (targetHero.isStuned == false)
-                        {
-                            return isEnable = false;
-                        }
+                    case EnableEffectTypes.isSlowed_true:
+                        //如果当前移动力大于等于最大移动力，则不视为减速
+                        isEnable = targetHero.Hero_Stats_Cur.movingPoint < targetHero.Hero_Stats_Max.movingPoint;
                         break;
+
+                    case EnableEffectTypes.isStun_true:
+                        isEnable = !targetHero.isStuned;
+                        break;
+
                     case EnableEffectTypes.isStun_false:
-                        if (targetHero.isStuned == true)
-                        {
-                            return isEnable = false;
-                        }
+                        isEnable = targetHero.isStuned;
                         break;
 
-                    case EnableEffectTypes.isHPLowerThan4_ture:
-                        if (targetHero.Hero_Stats_Cur.movingPoint >= 4)
-                        {
-                            return isEnable = false;
-                        }
+                    case EnableEffectTypes.isHPLowerThan4_true:
+                        isEnable = targetHero.Hero_Stats_Cur.movingPoint < 4;
                         break;
+
                     case EnableEffectTypes.isHPLowerThan4_false:
-                        if (targetHero.Hero_Stats_Cur.movingPoint < 4)
-                        {
-                            return isEnable = false;
-                        }
+                        isEnable = targetHero.Hero_Stats_Cur.movingPoint >= 4;
                         break;
 
                     default:
@@ -144,7 +151,6 @@ namespace Assets.Scripts
                         break;
                 }
             }
-
  
             return isEnable;
         }
