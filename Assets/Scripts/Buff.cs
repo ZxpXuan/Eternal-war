@@ -22,8 +22,10 @@ namespace Assets.Scripts
 
         public ParticleSystem  BuffSpecialEffect; //存储buff携带特效，需要在Buff效果消失同时销毁buff效果
 
-        public void StepsMoveOn()
+        public void MoveOn()   //无论是不是按回合调用，都有这个效果，只不过是当是按回合/按步骤时，是在一回合结束/步骤结束时才会调用这个buff
         {
+            //尤其是，眩晕、减速、沉默、AP_Max这类效果的buff必定是回合结算，其余按照步骤结算
+
             //if (buffDelay > 0)
             //{
             //    buffDelay--;
@@ -90,11 +92,6 @@ namespace Assets.Scripts
                     }
                 }
             }
-        }
-
-        public void TurnsMoveOn()
-        {
-
         }
 
         private void DestroyBuff()

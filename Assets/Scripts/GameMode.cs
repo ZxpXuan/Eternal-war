@@ -11,11 +11,11 @@ namespace Assets.Scripts
         public string gamemodename;  //游戏模式名称
         public int numberOfPlayers; //所需游戏玩家数
         private int numberOfHeroesEachPlayer = 3; //存储每个玩家控制的英雄数
-        private List<Player> playerList;  //场内的玩家列表，就是一场游戏最多多少人参与，有哪些人参与。初版功能只要有几个玩家序号就行了，便于扩展同局参与人数
+        public List<Player> playerList;  //场内的玩家列表，就是一场游戏最多多少人参与，有哪些人参与。初版功能只要有几个玩家序号就行了，便于扩展同局参与人数
         private int stepsInMode=0; //游戏当前步骤数
         private int turnsInMode=0; //游戏当前进行的回合数
         private BattleField BF; //存储游戏当前的战场地图
-        private List<SkillTrigger> skillTriggerList;//存储独立于英雄存在的技能触发器
+        public List<SkillTrigger> skillTriggerList;//存储独立于英雄存在的技能触发器
 
         private void Awake()   //初始化函数 游戏初始化，创建玩家，创建英雄，创建战场地图
         {
