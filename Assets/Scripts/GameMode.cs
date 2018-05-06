@@ -7,15 +7,48 @@ namespace Assets.Scripts
 {
     public class GameMode:MonoBehaviour
     {
-        private int gamemodeID; // 游戏模式ID
+        public int gamemodeID; // 游戏模式ID
         public string gamemodename;  //游戏模式名称
         public int numberOfPlayers; //所需游戏玩家数
         private int numberOfHeroesEachPlayer = 3; //存储每个玩家控制的英雄数
-        public List<Player> playerList;  //场内的玩家列表，就是一场游戏最多多少人参与，有哪些人参与。初版功能只要有几个玩家序号就行了，便于扩展同局参与人数
+
+        //场内的玩家列表，就是一场游戏最多多少人参与，有哪些人参与。初版功能只要有几个玩家序号就行了，便于扩展同局参与人数
+        public List<Player> playerList; 
         private int stepsInMode=0; //游戏当前步骤数
         private int turnsInMode=0; //游戏当前进行的回合数
         private BattleField BF; //存储游戏当前的战场地图
-        public List<SkillTrigger> skillTriggerList;//存储独立于英雄存在的技能触发器
+        public List<SkillTrigger> skillTriggerList;//存储独立于英雄存在的技能触发器，这个列表由Mode自身维护
+        public List<Castle> castleslList; //基地对象列表
+
+        public int Default_Initial_AP; //模式对应的初始AP点数
+        public int CurrentCommonMaxAP; //每回合能够部署的AP帧是多少
+
+        private void MinProcedure()
+        {
+            while (WhetherGameFinished())
+            {
+                for (int i = 0; i <= CurrentCommonMaxAP; i++)
+                {
+                    MoveOn_Step();
+                }
+                MoveOn_Turn();
+            }
+            GameFinished();
+        }
+
+        private void AddActionList()
+        {
+
+        }
+
+        private void MoveOn_Turn()
+        {
+            turnsInMode++;
+        }
+        private void MoveOn_Step()
+        {
+            stepsInMode++;
+        }
 
         private void Awake()   //初始化函数 游戏初始化，创建玩家，创建英雄，创建战场地图
         {
@@ -23,8 +56,8 @@ namespace Assets.Scripts
             for (int i = 0; i <= numberOfPlayers; i++)
             {
                 Player p=new Player();
-                //p.SetCamp(i);
-                //playerList.Add(p);
+                p.InitialLize(i, Default_Initial_AP,castleslList[i],i,this);  //定义了加载玩家的阵营等初始信息
+                playerList.Add(p);
             }
 
             //实例化载地图
@@ -38,7 +71,7 @@ namespace Assets.Scripts
             {
                 for (int j = 0; j <= numberOfHeroesEachPlayer; j++)
                 {
-                    playerList[i].AddHeros(Hero_temp);
+                    playerList[i].AddHero(Hero_temp);
                     var heroes_List = playerList[i].GetHeroes();
                     Instantiate(heroes_List[j]).transform.parent=GameObject.Find("Players").transform;  //把它预设到场景中的Players节点下
                 }
@@ -85,17 +118,6 @@ namespace Assets.Scripts
 
 
 
-
-
-
-
-
-
-        void GameEnd()//游戏结束之后的操作，输出游戏结果，清空数据
-        {
-
-        }
-
         List<Hero> ChooseHerosList()//玩家选取英雄，返回英雄选择列表 
         {
             List<Hero> herolist = new List<Hero>();
@@ -103,11 +125,17 @@ namespace Assets.Scripts
             return herolist; ;
         }
 
-        List<int> GameFinished() //游戏结束的逻辑，返回胜利者的玩家ID，需要重写
+        private void GameFinished() //游戏结束的逻辑，决定之后游戏的进程逻辑
         {
-            List<int> winner = new List<int>();
-            winner.Add(1);
-            return winner;
+            int winnerID;
+            for (int i = 0; i <= playerList.Count ; i++)
+            {
+                if (playerList[i].GetCastle().GetCSHP_Cur() >=0)
+                {
+                    winnerID= playerList[i].GetPlayerID();          //得到了胜利者ID，等待后续表现上的处理
+                }
+            }
+            
         }
 
         public void LoadBattleField()//加载战场地图，以及战场上的特殊地形（技能）到SkillList中

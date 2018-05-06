@@ -14,24 +14,37 @@ namespace Assets.Scripts
         public int triggerdelay; //存储效果开始允许触发所需的延迟步骤数
 
         private Hero ownerHero; //存储技能效果归属的英雄 ；初始化trigger时需要被player指定
-        private List<Hero> targetHero; //存储buff宿主列表  ;  在每次判断前都假设全部英雄都是目标对象，然后再进行筛选，留下的才是生效对象 ;初始化时需要被指定
-        public GameMode controlMode; //存储Mode控制器
+        private List<Hero> targetHero; //存储buff宿主列表  ;  在每次判断前都假设全部英雄都是目标对象，然后再进行筛选，留下的才是生效对象 
+        public GameMode controlMode; //存储Mode控制器 ;需要初始化
 
         public ParticleSystem specialEffect; //存储技能释放特效
-        public List<Vector2> effectRange;  //存储技能触发器范围的二维向量数组 
-        public List<Vector2> effectRange_ori;  //存储技能触发器范围的二维向量数组 
-
+        public List<Vector2> effectRange;  //存储技能触发器当前范围的二维向量数组 
+        public List<Vector2> effectRange_ori;  //存储技能原始触发器范围的二维向量数组 
         //（存储的是主角面向的相对位置的值（比如如果包含主角身前1格范围则为0,1），以x为横坐标，y为纵坐标（正方向为角色朝向），角色为坐标原点）
         //这个range需要在trigger初始化的时候，由当时发出技能的player位置，以及施法的朝向，和初始trigger的range，重新累加和转置，保存为新的range
         //另外，这个range也需要根据trigger是否运动来进行更改位移
 
         public List<Buff> effectBuff; //存储技能效果携带的Buff数组
 
-        public List<EnableEffectTypes> enbleEffectTypesList; //生效条件类型枚举以及其值的列表
+        public List<EnableEffectTypes> enbleEffectTypesList; //trigger生效条件类型枚举以及其值的列表
 
-        private void Awake()
+
+        public void InitialLize(Vector2 p, Hero ownHero, GameMode gameMode)  //上层驱动的某些值的初始化
         {
+            position = p;
+            ownerHero = ownHero;
+            controlMode = gameMode;
 
+            //初始化添加target hero 进来，从gameMode中已经实例化的对象中的英雄组件中添加
+            int playerNum = controlMode.playerList.Count;
+            for (int i = 0; i <= playerNum; i++)
+            {
+                int heroNum = controlMode.playerList[i].GetHeroes().Count;
+                for (int j = 0; j <= heroNum; j++)
+                {
+                    targetHero.Add(controlMode.playerList[i].GetHeroes()[j].GetComponent<Hero>());
+                }
+            }
         }
 
         public void MoveOn()
@@ -114,15 +127,19 @@ namespace Assets.Scripts
             }
         }
 
-        private void TakeEffect()  //在剩余的目标英雄身上产生buff，add list。至于触发了多少个英雄，则是在外部处理
+        private void TakeEffect()  //在剩余的目标英雄身上产生buff，add list。至于触发了多少个英雄，则是所有满足生效判断的游戏都会被触发
         {
             int count = effectBuff.Count;
             int length = targetHero.Count;
-            for (int i = 0; i < count; i++)
+            for (int i = 0; i <= count; i++)   //遍历每一种trugger下的buff
             {
                 for (int j = 0; j <= length; j++)      //需要对每一个目标添加buff
                 {
                     targetHero[j].Buffs.Add(effectBuff[i]);
+                    int tempIndex = targetHero[j].Buffs.Count -1;   //这里会不会有隐患？因为发生了下标-1
+
+                    //为英雄增加Buff时同时为Buff绑定原来的主人;为英雄增加Buff时同时为Buff绑定buff宿主
+                    targetHero[j].Buffs[tempIndex].InitialLize(ownerHero, targetHero[j]); 
                 }
                 
             }
@@ -148,7 +165,6 @@ namespace Assets.Scripts
 
                 for ( j = 0; j < targetHeroesNum; j++)//轮询每一种枚举，每一个潜在目标英雄都是否满足条件
                 {
-
 
                     switch (enbleEffectTypesList[i])
                     {

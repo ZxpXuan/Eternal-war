@@ -34,6 +34,18 @@ namespace Assets.Scripts
             Hero_Stats_Max = new Hero_Stats(Hero_Stats_Ori);
         }
 
+        public void InitialLize(Vector2 p, Player ownPlayer)  //上层驱动的某些值的初始化，当英雄加载入场时被调用
+        {
+            position = p;
+            OwnPlayer=ownPlayer ;
+
+            //设置英雄下各技能的初始化值
+            for (int i = 0; i <= heroSkillList.Count; i++)
+            {
+                heroSkillList[i].InitialLize(position,this,OwnPlayer.controlMode);
+            }
+        }
+
         public void AddAction(PlayerAction act) //添加英雄在本回合本玩家所做出的行动序列
         {
 

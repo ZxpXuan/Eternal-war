@@ -12,8 +12,8 @@ namespace Assets.Scripts
         public BuffEffectAndValue buffEffectAndValue; //生效种类以及值，每个buff只带一种效果
         public List<EnableEffectTypes> enbleEffectTypesList; //生效条件类型枚举以及其值的列表
 
-        private Hero ownerHero; //存储技能效果归属的英雄
-        private Hero targetHero; //存储buff宿主
+        private Hero ownerHero; //存储技能效果归属的英雄，在trigger发挥效果时被指定
+        private Hero targetHero; //存储buff宿主，在trigger发挥效果时被指定
 
         public bool isExistByTurn; //buff是否以回合计其效果，如果是0，则代表回合
         public bool isRepeated; //buff是否重复生效。按照回合或者是按照steps重复生效；如果不重复，则是单次效果，生效后Buff就可以被销毁了
@@ -21,6 +21,13 @@ namespace Assets.Scripts
         public int buffDuration; //buff持续时间（如果=0则为立即效果，按照回合或步骤结算效果）
 
         public ParticleSystem  BuffSpecialEffect; //存储buff携带特效，需要在Buff效果消失同时销毁buff效果
+
+
+        public void InitialLize( Hero ownHero ,Hero targetH)  //上层驱动的某些值的初始化
+        {
+            ownerHero = ownHero;
+            targetHero = targetH;
+        }
 
         public void MoveOn()   //无论是不是按回合调用，都有这个效果，只不过是当是按回合/按步骤时，是在一回合结束/步骤结束时才会调用这个buff
         {
