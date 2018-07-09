@@ -32,12 +32,6 @@ namespace Assets.Scripts
      isRepeatedByStep; buff效果是否按步骤再次发动，用于会产生持续性效果的技能，比如火海。如果不再次发动，
      则是在整个buff允许被触发的期间内，任意单位进出此区域只会被触发一次效果。注意，如果此时buff效果是立即的，则没有意义*/
 
-    public enum SkillTriggerType { isTheFirstOneTriggerThenDispear, isRepeatedByStep }
-
-    /* 1.isTheFirstOneTriggerThenDispear; 如果勾选，表示只要有角色进入trigger就会导致此trigger在下一步骤消失
-    isTheGeneralTrigger; 若勾选，表示任何进入此触发区域的单位都会被施加buff
-    2.isTheGeneralTrigger；如果勾选，表示这是通过trigger的存在时间来控制的trigger*/
-
     public enum Direction { up,down,left,right };//  技能释放时英雄的朝向
     public enum PlayerAction { moving,skill }  // 玩家添加行动的行动类型
 
