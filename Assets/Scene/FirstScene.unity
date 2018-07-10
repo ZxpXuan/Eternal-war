@@ -160,6 +160,16 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114998882037498120, guid: 5d9657da7f9a8654594261888a1f5a66,
+        type: 2}
+      propertyPath: width
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114998882037498120, guid: 5d9657da7f9a8654594261888a1f5a66,
+        type: 2}
+      propertyPath: length
+      value: 17
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5d9657da7f9a8654594261888a1f5a66, type: 2}
   m_IsPrefabParent: 0
@@ -531,8 +541,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fac9b8870b3c9874e86ecd0f2ab22e4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gamemodeID: 0
   gamemodename: DeathMatch
   numberOfPlayers: 2
+  playerList: []
+  skillTriggerList: []
+  castleslList: []
+  Default_Initial_AP: 0
+  CurrentCommonMaxAP: 0
 --- !u!4 &2056239697
 Transform:
   m_ObjectHideFlags: 0
