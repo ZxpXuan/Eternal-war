@@ -1,0 +1,102 @@
+Player
+	Properties
+		Crystals
+		Action Point
+		
+	TimeAxis(Step)
+	
+Map
+	Cell
+	Unit
+		
+
+Unit
+	Position
+	Direction
+	
+	SubClass:
+	Hero
+		HP
+		MovePoint
+		Skills
+		
+	Base
+	Trigger // Place on field, overlayable
+		// Message functions
+		OnEnter
+		OnStay
+		OnExit
+		
+Battle
+	Actions
+		Move
+		Take(AP, Crystal)
+		Attack
+		Skill(s)
+			See Skill
+			
+Skill
+	Prepare
+	Casting
+	Cooling
+	CD
+	AreaOfEffect
+	TargetType
+		None
+		Self
+		Allies
+		Opponents
+		Trigger
+	Effect(s)
+	
+	
+Effect
+	Stage
+		Inactive // Won't do any thing until activation from outside
+		Idle // Check the condition each round/step
+		Active
+		Disposed
+		
+	ExcuteType
+		EachRound
+		EachStep
+		
+	ActiveCondition // The condition for this effect tansfer from idle to active
+		See BaseCondition
+	DisposeCondition // The condition for dispose this effect
+		See BaseCondition
+		
+	Value
+		bool
+		float
+		Vector2
+		
+	Property
+		HP_Max
+		HP_Cur
+		AP_Max
+		AP_Cur
+		MovePoint
+		Efficency // Affect AP cost
+		Stun
+		Silence
+		Protected
+		Position
+		CreateEffect
+		
+	// Processing order:
+	// AddMul -> Add -> Set
+	// *Set will override other effects
+	FunctionType
+		Set
+		Add
+		AddMul
+	
+	// For effect creation
+	EffectRefs
+
+BaseCondition
+	Effect
+	IsSatisfied()
+	* Override ==
+	* Override !=
