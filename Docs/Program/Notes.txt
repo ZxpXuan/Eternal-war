@@ -1,4 +1,12 @@
+Priority(High to low)
+TimeAxis
+	Dynamic length
+	Add & remove actions
+	Time trace
+	
+
 Player
+	ID
 	Properties
 		Crystals
 		Action Point
@@ -11,21 +19,23 @@ Map
 		
 
 Unit
+	Player // Which this unit belongs to
 	Position
-	Direction
 	
-	SubClass:
-	Hero
-		HP
-		MovePoint
-		Skills
-		
-	Base
-	Trigger // Place on field, overlayable
-		// Message functions
-		OnEnter
-		OnStay
-		OnExit
+	TakeEffects(Effect[])
+	
+	SubClasses:
+		Hero // The only unit player can control
+			HP
+			MovePoint
+			Skills
+			
+		Castle // Cannot be used by player
+		Trigger // Place on field, overlayable
+			// Message functions
+			OnEnter
+			OnStay
+			OnExit
 		
 Battle
 	Actions
